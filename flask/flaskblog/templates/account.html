@@ -1,0 +1,151 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section" style="padding-top: 5%">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ image_file }}">
+        <div class="media-body">
+          <h2 class="account-heading" style="padding-top: 5%;">{{ current_user.username }}</h2>
+          <p class="text-secondary">{{ current_user.email }}</p>
+        </div>
+      </div>
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Account Info</legend>
+                <div class="form-group">
+                    {{ form.username.label(class="form-control-label") }}
+
+                    {% if form.username.errors %}
+                        {{ form.username(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.username(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.email.label(class="form-control-label") }}
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="containter" style="padding-top: 10px;">
+                    
+                    <h4 style="padding-bottom: 10px;">Billing Information </h4>
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            {{ form.name.label(class="form-control-label") }}
+                            {% if form.name.errors %}
+                                {{ form.email(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.name.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.name(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            {{ form.creditcard.label(class="form-control-label") }}
+                            {% if form.creditcard.errors %}
+                                {{ form.creditcard(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.creditcard.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.creditcard(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-3">
+                            {{ form.expdate.label(class="form-control-label") }}
+                            {% if form.expdate.errors %}
+                                {{ form.expdate(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.expadate.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.expdate(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group col-lg-3">
+                            {{ form.cvc.label(class="form-control-label") }}
+                            {% if form.cvc.errors %}
+                                {{ form.cvc(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.cvc.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.cvc(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            {{ form.bill_address.label(class="form-control-label") }}
+                            {% if form.bill_address.errors %}
+                                {{ form.bill_address(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.bill_address.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.bill_address(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-3">
+                            {{ form.bill_zip.label(class="form-control-label") }}
+                            {% if form.bill_zip.errors %}
+                                {{ form.bill_zip(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.bill_zip.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.bill_zip(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form.picture.label() }}
+                    {{ form.picture(class="form-control-file") }}
+                    {% if form.picture.errors %}
+                        {% for error in form.picture.errors %}
+                            <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block content %}
+<div style="padding-top: 7%;">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-1"><img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + current_user.image_file) }}"> </div>
+
+      <div class="col-lg-5" style="padding-top: 4%;"><h1>{{current_user.username}}</h1></div>
+
+    </div>
+  </div>
+  <div> 
+   <hr>
+    <h2 style="padding-top: 0% !important; padding-bottom: 2%;">Active Chips</h2>
+  </div>
+   
+    {% for post in posts %}
+        <article class="media content-section col-lg-10" >
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ post.author.username }}</a>
+              <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+
+            <button class=" btn btn-primary" style="margin-top: 35px !important; float: right;"><a href="{{ url_for('resume_cs') }}" style="color:white;"> View</a></button>
+            </div>
+            
+              <h5 style="padding-top: 10px !important;"><a class="article-title" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h5>
+        
+         
+            <small class="text-muted">{{ post.content }}</small>
+            <div class="article-metadata">
+              
+            </div>
+          </div>
+        </article>
+</div>
+
+    {% endfor %}
+
+{% endblock content %}
+
